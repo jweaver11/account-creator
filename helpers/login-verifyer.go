@@ -2,7 +2,6 @@ package helpers
 
 import (
 	"ac/models"
-	"log"
 )
 
 // Basic Username check function that calls all the checks the username needs
@@ -12,11 +11,15 @@ func CheckUsername(un string) bool {
 	models.Login.Err = "No errors"
 
 	// Checks if username fits length
-	if CheckLength(un) == false {
-
+	if CheckLength(un) {
+		if CheckIsNotTaken(un) {
+			return true
+		} else {
+			return false
+		}
+	} else {
 		return false
 	}
-	return true
 }
 
 // Basic Password check function that calls all the checks the password needs
@@ -26,25 +29,27 @@ func CheckPassword(pw string) bool {
 	models.Login.Err = "No errors"
 
 	// Checks if password fits length
-	if CheckLength(pw) == false {
-
+	if CheckLength(pw) {
+		return true
+	} else {
 		return false
 	}
-	return true
 }
 
 // Check if username and password are long enough
 func CheckLength(str string) bool {
 	if len(str) < 4 {
-		log.Println("Username too short")
-		models.Login.Err = "Username too short"
+		models.Login.Err = "string too short"
 		return false
 	} else if len(str) > 19 {
-		log.Println("Username too long")
-		models.Login.Err = "Username too long"
+		models.Login.Err = "string too long"
 		return false
 	} else {
-		log.Println("Username passed the length check")
 		return true
 	}
+}
+
+// Checks if username is taken in database
+func CheckIsNotTaken(un string) bool {
+	return true
 }
