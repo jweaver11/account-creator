@@ -7,43 +7,60 @@ package helpers
 import (
 	"ac/models"
 	"fmt"
+	"log"
 )
 
-// Calls the input Username and Password functions
+// Calls username and password
+// If username or password fails check
+// then program won't write to database
 func InputLogin() {
-	InputUsername()
-	InputPassword()
+	if InputUsername() {
+		if InputPassword() {
+			SaveLogin()
+		} else {
+			log.Println(models.Login.Err)
+		}
+	} else {
+		log.Println(models.Login.Err)
+	}
 }
 
 // Accepts our username and calls the check username function
-func InputUsername() {
+func InputUsername() bool {
+
 	// Sets our username variable and reads in user input
 	var un string
 	fmt.Scanln(&un)
 
 	// Check that username is not taken and meets criteria
-	// If it does, it saves username to login struct
+	// If it does, it saves username to login struct and writes to database
 	// Otherwise it returns the error
 	if CheckUsername(un) {
 		models.Login.Username = un
+		return true
 	} else {
 		fmt.Println(models.Login.Err)
+		models.Login.Status = "Login not saved"
+		return false
 	}
 }
 
 // Accepts our password and calls the check password function
-func InputPassword() {
+func InputPassword() bool {
 
 	// Sets our password variable and reads in user input
 	var pw string
 	fmt.Scanln(&pw)
 
 	// Check if password meets criteria
-	// If it does, it saves password to login struct
+	// If it does, it saves password to login struct and writes to database
 	// Otherwise it returns the error
 	if CheckPassword(pw) {
 		models.Login.Password = pw
+		return true
 	} else {
 		fmt.Println(models.Login.Err)
+		models.Login.Status = "Login not saved"
+		return false
 	}
 }

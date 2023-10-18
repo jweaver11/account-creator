@@ -14,8 +14,6 @@ func main() {
 	// Calls inputlogin function to accept user input
 	helpers.InputLogin()
 
-	helpers.SaveLogin()
-
 	// Prints login to see if it was saved to database or not
 	fmt.Printf("Username: %s \nPassword: %s\n", models.Login.Username, models.Login.Password)
 

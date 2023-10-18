@@ -12,9 +12,8 @@ func CheckUsername(un string) bool {
 	models.Login.Err = "No errors"
 
 	// Checks if username fits length
-	if CheckLength(un) {
+	if CheckLength(un) == false {
 
-		models.Login.Err = "Username failed length check"
 		return false
 	}
 	return true
@@ -28,7 +27,7 @@ func CheckPassword(pw string) bool {
 
 	// Checks if password fits length
 	if CheckLength(pw) == false {
-		models.Login.Err = "Password failed length check"
+
 		return false
 	}
 	return true
