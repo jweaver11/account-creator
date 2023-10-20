@@ -5,6 +5,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"os"
 	"time"
 
 	"go.mongodb.org/mongo-driver/bson"
@@ -19,7 +20,14 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
-	clientOptions := options.Client().ApplyURI("mongodb+srv://jweaver:1232@cluster0.tdnjlbj.mongodb.net/?retryWrites=true&w=majority")
+	// Adds file path from git ignore to keep database secure
+	filePath := ".ignore/mongodb-connect.txt"
+	fileData, fail := os.ReadFile(filePath)
+	if fail != nil {
+		log.Println("Error reading mongodb-connect.txt file")
+	}
+	URIPath := string(fileData)
+	clientOptions := options.Client().ApplyURI(URIPath)
 
 	// Sets our mongo client that handles connections and
 	// connects to our desired cluster
