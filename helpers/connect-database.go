@@ -1,6 +1,7 @@
 package helpers
 
 import (
+	"ac/migrations"
 	"context"
 	"log"
 	"os"
@@ -36,6 +37,6 @@ func ConnectDB() {
 	}
 	defer client.Disconnect(ctx)
 
-	WriteDB(client)
-
+	// Writes to our database using the just made connections
+	migrations.WriteDB(client)
 }
