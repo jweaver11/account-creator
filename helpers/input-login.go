@@ -17,15 +17,19 @@ func InputLogin() {
 
 	// Check if un and pw pass checks
 	if InputUsername() {
+
 		if InputPassword() {
+
 			// If both pass checks, save to database
-			// Save code here
+			ConnectDB()
 			log.Printf("\nUsername: %s \nPassword: %s\n", models.Login.Username, models.Login.Password)
 		} else {
+
 			// Otherwise log the errors
 			log.Println(models.Login.Err)
 		}
 	} else {
+
 		// Otherwise log the errors (only username passed check)
 		log.Println(models.Login.Err)
 	}
@@ -38,14 +42,15 @@ func InputUsername() bool {
 	var un string
 	fmt.Scanln(&un)
 
-	// Check that username is not taken and meets criteria
-	// If it does, it saves username to login struct and writes to database
-	// Otherwise it returns the error
+	// Makes sure username passes all checks
 	if CheckUsername(un) {
+
+		// Saves un to our struct
 		models.Login.Username = un
 		return true
 	} else {
-		models.Login.Status = "Login not saved"
+
+		// Otherwise returns it did not pass checks
 		return false
 	}
 }
@@ -57,14 +62,15 @@ func InputPassword() bool {
 	var pw string
 	fmt.Scanln(&pw)
 
-	// Check if password meets criteria
-	// If it does, it saves password to login struct and writes to database
-	// Otherwise it returns the error
+	// Makes sure password passes all chekcs
 	if CheckPassword(pw) {
+
+		// Saves pw to our struct if checks passed
 		models.Login.Password = pw
 		return true
 	} else {
-		models.Login.Status = "Login not saved"
+
+		// Otherwise returns that it did not pass checks
 		return false
 	}
 }

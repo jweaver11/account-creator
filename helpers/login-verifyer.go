@@ -55,5 +55,8 @@ func CheckLength(str string) bool {
 // Checks if username is taken in database
 func CheckIsNotTaken(un string) bool {
 
+	// Logic here will read the entire collection in database
+	// And make sure no username is the same
+	// If it is, return false, otherwise return true
 	return true
 }
