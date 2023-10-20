@@ -12,7 +12,7 @@ func CheckUsername(un string) bool {
 	models.Login.Err = "No errors"
 
 	// Checks if username fits length
-	if CheckLength(un) {
+	if CheckUNLength(un) {
 		if CheckIsNotTaken(un) {
 			return true
 		} else {
@@ -31,7 +31,7 @@ func CheckPassword(pw string) bool {
 	models.Login.Err = "No errors"
 
 	// Checks if password fits length
-	if CheckLength(pw) {
+	if CheckPWLength(pw) {
 		return true
 	} else {
 		return false
@@ -39,13 +39,27 @@ func CheckPassword(pw string) bool {
 }
 
 // Check if username and password are long enough
-func CheckLength(str string) bool {
+func CheckUNLength(str string) bool {
 
 	if len(str) < 4 {
-		models.Login.Err = "string too short"
+		models.Login.Err = "username too short"
 		return false
 	} else if len(str) > 19 {
-		models.Login.Err = "string too long"
+		models.Login.Err = "username too long"
+		return false
+	} else {
+		return true
+	}
+}
+
+// Check if username and password are long enough
+func CheckPWLength(str string) bool {
+
+	if len(str) < 4 {
+		models.Login.Err = "password too short"
+		return false
+	} else if len(str) > 19 {
+		models.Login.Err = "password too long"
 		return false
 	} else {
 		return true

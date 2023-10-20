@@ -12,16 +12,13 @@ func main() {
 func Run() {
 
 	// Prompts user to input username and password
+	// This is temporary for front-end
 	fmt.Println("Please put in your username and password: ")
 
 	// Calls inputlogin function to accept user input
-	// This function will also call other functions to write to database
-	// Or quit the program if requirements not met
+	// This handles all logic and will write to database if login
+	// Passes checks
 	helpers.InputLogin()
-
-	// Initializes our client variable in helpers to
-	// The correct client and database
-	helpers.ConnectDB()
 
 	/*router := gin.Default()
 

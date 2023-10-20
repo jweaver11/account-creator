@@ -20,7 +20,7 @@ func InputLogin() {
 
 		if InputPassword() {
 
-			// If both pass checks, save to database
+			// If both pass checks, connect and save to database
 			ConnectDB()
 			log.Printf("\nUsername: %s \nPassword: %s\n", models.Login.Username, models.Login.Password)
 		} else {
