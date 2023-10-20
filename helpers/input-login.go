@@ -19,7 +19,7 @@ func InputLogin() {
 	if InputUsername() {
 		if InputPassword() {
 			// If both pass checks, save to database
-			SaveLogin()
+			// Save code here
 			log.Printf("\nUsername: %s \nPassword: %s\n", models.Login.Username, models.Login.Password)
 		} else {
 			// Otherwise log the errors
