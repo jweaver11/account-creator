@@ -14,6 +14,7 @@ import (
 // If username or password fails check
 // then program won't write to database
 func InputLogin() {
+
 	// Check if un and pw pass checks
 	if InputUsername() {
 		if InputPassword() {
