@@ -9,7 +9,7 @@ import (
 func CheckUsername(un string) bool {
 
 	// Set err to none initially
-	models.Login.Err = "No errors"
+	models.Error = "No errors"
 
 	// Checks if username fits length
 	if CheckUNLength(un) {
@@ -28,7 +28,7 @@ func CheckUsername(un string) bool {
 func CheckPassword(pw string) bool {
 
 	// Set err to none initially
-	models.Login.Err = "No errors"
+	models.Error = "No errors"
 
 	// Checks if password fits length
 	if CheckPWLength(pw) {
@@ -42,10 +42,10 @@ func CheckPassword(pw string) bool {
 func CheckUNLength(str string) bool {
 
 	if len(str) < 4 {
-		models.Login.Err = "username too short"
+		models.Error = "username too short"
 		return false
 	} else if len(str) > 19 {
-		models.Login.Err = "username too long"
+		models.Error = "username too long"
 		return false
 	} else {
 		return true
@@ -56,10 +56,10 @@ func CheckUNLength(str string) bool {
 func CheckPWLength(str string) bool {
 
 	if len(str) < 4 {
-		models.Login.Err = "password too short"
+		models.Error = "password too short"
 		return false
 	} else if len(str) > 19 {
-		models.Login.Err = "password too long"
+		models.Error = "password too long"
 		return false
 	} else {
 		return true

@@ -26,12 +26,12 @@ func InputLogin() {
 		} else {
 
 			// Otherwise log the errors
-			log.Println(models.Login.Err)
+			log.Println(models.Error)
 		}
 	} else {
 
 		// Otherwise log the errors (only username passed check)
-		log.Println(models.Login.Err)
+		log.Println(models.Error)
 	}
 }
 
