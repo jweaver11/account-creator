@@ -25,5 +25,4 @@ func WriteDB(client *mongo.Client) {
 	// Logs our username written ID
 	id := res.InsertedID
 	log.Printf("Username successfully written to database. ID: %d\n", id)
-
 }

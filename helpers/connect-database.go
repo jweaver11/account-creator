@@ -40,5 +40,4 @@ func ConnectDB() {
 
 	// Writes to our database using the just made connections
 	migrations.WriteDB(client)
-
 }

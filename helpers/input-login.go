@@ -13,7 +13,7 @@ import (
 // Calls username and password
 // If username or password fails check
 // then program won't write to database
-func InputLogin() {
+func InputLogin() bool {
 
 	// Check if un and pw pass checks
 	if InputUsername() {
@@ -21,17 +21,19 @@ func InputLogin() {
 		if InputPassword() {
 
 			// If both pass checks, connect and save to database
-			ConnectDB()
 			log.Printf("\nUsername: %s \nPassword: %s\n", models.Login.Username, models.Login.Password)
+			return true
 		} else {
 
 			// Otherwise log the errors
 			log.Println(models.Error)
+			return false
 		}
 	} else {
 
 		// Otherwise log the errors (only username passed check)
 		log.Println(models.Error)
+		return false
 	}
 }
 
