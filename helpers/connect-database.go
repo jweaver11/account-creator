@@ -11,6 +11,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
+// Connects to our database and initializes our Json file
 func ConnectDB() {
 
 	// Context handles information to functions that handle timeouts, cancellations, etc.
@@ -39,4 +40,5 @@ func ConnectDB() {
 
 	// Writes to our database using the just made connections
 	migrations.WriteDB(client)
+
 }
