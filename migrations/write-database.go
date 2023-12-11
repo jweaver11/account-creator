@@ -9,7 +9,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-func WriteDB(client *mongo.Client) {
+func WriteData(client *mongo.Client) {
 
 	// Goes into this database or creates it, with the collection name
 	LoginCollection := client.Database("account").Collection("login")

@@ -2,7 +2,7 @@ module ac
 
 go 1.21.1
 
-require go.mongodb.org/mongo-driver v1.12.1
+require go.mongodb.org/mongo-driver v1.13.1
 
 require (
 	github.com/bytedance/sonic v1.10.2 // indirect

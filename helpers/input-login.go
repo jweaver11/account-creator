@@ -17,14 +17,12 @@ func InputLogin() {
 	InputPassword()
 	// If the username and password pass the checks, return true
 	if LoginChecks() {
-		// Log the saved username and password
+		// Write the login to database
+		SaveLogin()
 		log.Printf("\nUsername: %s \nPassword: %s\n", models.Login.Username, models.Login.Password)
-		ConnectDB()
-
 	} else {
 		// Otherwise log the errors
 		log.Println(models.Error)
-
 	}
 }
 

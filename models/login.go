@@ -6,7 +6,8 @@ type LoginStruct struct {
 	Password string // String for password
 }
 
-var Error string // Error message if any check fails
+// Error message if any check fails
+var Error string
 
 // Sets our login variable as the login struct
 var Login LoginStruct
