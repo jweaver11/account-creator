@@ -3,14 +3,15 @@ package main
 import (
 	"ac/helpers"
 	"fmt"
-	"log"
+
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
 
-	/*router := gin.Default()
+	router := gin.Default()
 
-	fmt.Println(router)*/
+	fmt.Println(router)
 
 	RunProgram()
 }
@@ -27,9 +28,5 @@ func RunProgram() {
 	// Calls inputlogin function to accept user input
 	// This handles all logic and will write to database if login
 	// Passes checks
-	if helpers.InputLogin() {
-		helpers.ConnectDB()
-	} else {
-		log.Println("Error with InputLogin Function")
-	}
+	helpers.InputLogin()
 }

@@ -10,69 +10,36 @@ import (
 	"log"
 )
 
-// Calls username and password
-// If username or password fails check
-// then program won't write to database
-func InputLogin() bool {
+// Passes username and password input and runs checks
+// If they pass checks, it writes to database
+func InputLogin() {
+	InputUsername()
+	InputPassword()
+	// If the username and password pass the checks, return true
+	if LoginChecks() {
+		// Log the saved username and password
+		log.Printf("\nUsername: %s \nPassword: %s\n", models.Login.Username, models.Login.Password)
+		ConnectDB()
 
-	// Check if un and pw pass checks
-	if InputUsername() {
-
-		if InputPassword() {
-
-			// If both pass checks, connect and save to database
-			log.Printf("\nUsername: %s \nPassword: %s\n", models.Login.Username, models.Login.Password)
-			return true
-		} else {
-
-			// Otherwise log the errors
-			log.Println(models.Error)
-			return false
-		}
 	} else {
-
-		// Otherwise log the errors (only username passed check)
+		// Otherwise log the errors
 		log.Println(models.Error)
-		return false
+
 	}
 }
 
 // Accepts our username and calls the check username function
-func InputUsername() bool {
-
+func InputUsername() {
 	// Sets our username variable and reads in user input
 	var un string
 	fmt.Scanln(&un)
-
-	// Makes sure username passes all checks
-	if CheckUsername(un) {
-
-		// Saves un to our struct
-		models.Login.Username = un
-		return true
-	} else {
-
-		// Otherwise returns it did not pass checks
-		return false
-	}
+	models.Login.Username = un
 }
 
 // Accepts our password and calls the check password function
-func InputPassword() bool {
-
+func InputPassword() {
 	// Sets our password variable and reads in user input
 	var pw string
 	fmt.Scanln(&pw)
-
-	// Makes sure password passes all chekcs
-	if CheckPassword(pw) {
-
-		// Saves pw to our struct if checks passed
-		models.Login.Password = pw
-		return true
-	} else {
-
-		// Otherwise returns that it did not pass checks
-		return false
-	}
+	models.Login.Password = pw
 }
