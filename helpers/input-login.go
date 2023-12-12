@@ -21,5 +21,4 @@ func InputLogin() {
 	var pw string
 	fmt.Scanln(&pw)
 	models.Login.Password = pw
-
 }

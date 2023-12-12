@@ -3,30 +3,31 @@ package main
 import (
 	"ac/helpers"
 	"ac/models"
-	"fmt"
 	"log"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
 
+	// Creates a new router (controller)
 	router := gin.Default()
+	// router accepts post requests called submit
+	router.POST("/submit", func(c *gin.Context) {
 
-	fmt.Println(router)
-
-	RunProgram()
-}
-
-func RunProgram() {
-
-	// Prompts user to input username and password
-	// This is temporary for front-end
-	fmt.Println("Please put in your username and password: ")
+		// Logic to pass correct handler
+		helpers.ReadJsonx2(loginData)
+		// display status of request
+		c.String(http.StatusOK, "You submitted username and password")
+	})
+	// Runs the server on port 8080
+	router.Run(":8080")
 
 	// Calls inputlogin function to accept un and pw from front end
 	helpers.InputLogin()
 
+	// LOGIC WHEN USERNAME AND PASSWORD ARE PASSED TO BACKEND
 	// If the username and password pass the checks, return true
 	if helpers.LoginChecks() {
 		// Write the login to database

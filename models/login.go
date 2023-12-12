@@ -11,3 +11,8 @@ var Error string
 
 // Sets our login variable as the login struct
 var Login LoginStruct
+
+type loginData struct {
+	Username string `json:"username"`
+	Password string `json:"password"`
+}

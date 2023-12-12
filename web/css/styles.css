@@ -5,17 +5,51 @@ html {
     line-height: 1.6;
 }
 
+form {
+    max-width: 250px;
+    margin: 20px auto;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
 
 .container {
     overflow: hidden;
     display: block;
     margin-right: auto;
     margin-left: auto;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-top: 100px;
+    margin-top: 200px;
     color: rgb(218, 218, 218);
-    width: 300px;
-    height: auto;
-    border: solid red;
+    width: 500px;
+    height: 500px;
+    border: solid rgb(118, 128, 199);
+    border-radius: 1rem;
+    background: linear-gradient(to top left, rgb(25, 28, 41), #46527d);
+    text-align: center;
+}
+
+.textbox-container {
+    overflow: hidden;
+    display: block;
+    border: solid blue;
+    max-width: 350px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
