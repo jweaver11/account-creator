@@ -17,12 +17,12 @@
             <div class="textbox-container">
 
                 <!-- Adds our textbox forms -->
-                <form id="login-form">
-                    <label for="un-textbox">Username: </label>
-                    <input type="text" id="un-textbox" name="un-textbox" placeholder="Enter your username">
+                <form id="loginForm">
+                    <label for="unInput">Username:</label>
+                    <input type="text" id="unInput" name="unInput" placeholder="Username">
                     <!-- Adds password label and box -->
-                    <label for="pw-textbox">Password: </label>
-                    <input type="text" id="pw-textbox" name="pw-textbox" placeholder="Enter your password">
+                    <!-- <label for="pw-textbox">Password: </label>
+                    <input type="text" id="pw-textbox" name="pw-textbox" placeholder="Enter your password"> -->
                     <!--Adds submit box -->
                     <input type="submit" value="Submit">    
                 </form>
@@ -32,16 +32,18 @@
 
         <!-- Start of javascript -->
         <script>
-            document.getElementById("login-form").addEventListener("submit", function(event) {
+            /*
+            document.getElementById("loginForm").addEventListener("submit", function(event) {
                 // Prevent Default submissions
                 event.preventDefault();
 
                 // Get value of username and password when submit is pressed
-                var unValue = document.getElementById("un-textbox").value;
+                var unValue = document.getElementById("unInput").value;
                 //var pwValue = document.getElementById("pw-textbox").value;
 
-                // Json object with text value
+                // Json object with unValue value
                 var loginData = { text: unValue };
+            })
 
                 // Make an HTTP POST request to the Go server
                 fetch("http://localhost:8080/submit", {
@@ -61,6 +63,7 @@
                     console.error("Error submitting text:", error);
                 });
             });
+            */
 
         </script>
         <!-- End of javascript -->

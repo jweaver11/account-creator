@@ -6,13 +6,17 @@ type LoginStruct struct {
 	Password string // String for password
 }
 
-// Error message if any check fails
-var Error string
-
 // Sets our login variable as the login struct
 var Login LoginStruct
 
+// Error message if any check fails
+var Error string
+
+// json struct of our login struct
 type loginData struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
 }
+
+// Variable for the json struct
+var LoginData loginData
