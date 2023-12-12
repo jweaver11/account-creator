@@ -4,6 +4,7 @@ import (
 	"ac/helpers"
 	"ac/models"
 	"log"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
@@ -22,9 +23,12 @@ func main() {
 		c.String(http.StatusOK, "You submitted username and password")
 	})
 	*/
+	router.GET("/", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "templates/index.html", nil)
+	})
 
 	// middleware to serve static files
-	router.Static("/web", "./web")
+	router.Static("/static", "./static")
 
 	// Runs the server on port 8080
 	router.Run(":8080")
