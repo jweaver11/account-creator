@@ -3,6 +3,7 @@ package main
 import (
 	"ac/helpers"
 	"ac/models"
+	"html/template"
 	"log"
 	"net/http"
 
@@ -10,9 +11,16 @@ import (
 )
 
 func main() {
-
 	// Creates a new router (controller)
 	router := gin.Default()
+	// Sets html template renderer to use index.html file
+	router.SetHTMLTemplate(template.Must(template.New("index/html").ParseFiles("templates/index.html")))
+
+	// HANDLING REQUESTS ****************************************
+	// Default route for users connecting
+	router.GET("/", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "index.html", nil)
+	})
 
 	/* router accepts post requests called submit
 	router.POST("/submit", func(c *gin.Context) {
@@ -23,17 +31,13 @@ func main() {
 		c.String(http.StatusOK, "You submitted username and password")
 	})
 	*/
-	router.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "templates/index.html", nil)
-	})
 
 	// middleware to serve static files
 	router.Static("/static", "./static")
-
 	// Runs the server on port 8080
 	router.Run(":8080")
 
-	// TEEEMEMMMMMMMMPPPPP
+	// TEEEMEMMMMMMMMPPPPP ***************************************
 	// Calls inputlogin function to accept un and pw from front end
 	helpers.InputLogin()
 
