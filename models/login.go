@@ -13,10 +13,7 @@ var Login LoginStruct
 var Error string
 
 // json struct of our login struct
-type loginData struct {
+type LoginData struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
 }
-
-// Variable for the json struct
-var LoginData loginData
