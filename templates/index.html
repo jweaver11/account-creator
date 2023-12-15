@@ -26,13 +26,12 @@
                     <!--Adds submit box -->
                     <input type="submit" value="Submit">    
                 </form>
-
             </div>
         </div>
 
-        
         <!-- Start of javascript -->
         <script>
+            // Event listener when the form is submitted with name loginForm
             document.getElementById("loginForm").addEventListener("submit", function(event) {
                 // Prevent Default submissions
                 event.preventDefault();
@@ -46,15 +45,16 @@
                     Username: unValue,
                     Password: pwValue };
             
-
                 // Make an HTTP POST request to the Go server
                 fetch("http://localhost:8080/submit", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                     },
+                    // Pass our model using JSON
                     body: JSON.stringify(loginData),
                 })
+                // Error handling
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -65,11 +65,9 @@
                     console.error("Error submitting text:", error);
                 });
             });
-            
-
         </script>
         <!-- End of javascript -->
-
     </body>
+    <!-- End of body -->
 
 </html>

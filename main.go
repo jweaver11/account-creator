@@ -22,16 +22,15 @@ func main() {
 		c.HTML(http.StatusOK, "index.html", nil)
 	})
 
+	// Handler route when users submit their username and password
 	router.POST("/submit", func(c *gin.Context) {
+		// json model for receiving javascript data
 		var loginData models.LoginData
-
+		// Error handling
 		if err := c.ShouldBindJSON(&loginData); err != nil {
 			c.JSON(400, gin.H{"error": "Invalid JSON payload"})
 			return
 		}
-
-		// Access the value sent from JavaScript
-		c.JSON(200, gin.H{"message": "Received data", "data": loginData.Username})
 
 		// Pass Data to our backend models
 		models.Login.Username = loginData.Username
